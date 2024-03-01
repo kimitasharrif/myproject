@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{data[1]}}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+
+<body>
+    <!-- mpesa modal -->
+    <div class="container">
+        {% include 'navbar.html' %}
+        <h2 class="text-dark">{{data[1]}}</h2>
+        <section class="row">
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-wifi">&nbsp;&nbsp;&nbsp; Free Wifi</b>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-home">&nbsp;&nbsp;&nbsp; Home</b>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-clock-o">&nbsp;&nbsp;&nbsp; Time</b>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-building">&nbsp;&nbsp;&nbsp; City Veiw</b>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-bath">&nbsp;&nbsp;&nbsp; Private bathroom</b>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card shadow text-center p-3">
+                    <b class="fa fa-car">&nbsp;&nbsp;&nbsp; Ample parking</b>
+
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <div class="col-md-8">
+                <img src="/static/images/{{data[6]}}" class="w-75 mx-auto">
+                <br><br>
+                <b>Location: <span class="text-success">Westlands, Nairobi</span> </b>
+                <i>Availability <span class="text-info">{{data[4]}}</span> </i>
+                <b>Room size : <span class="text-warning">{{data[5]}}</span> </b>
+                <h3 class="text-success">Description</h3>
+                <p>{{data[2]}}</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow bg-info">
+                    <p>Property Highlights</p>
+                    <p>Top Location: Highly rated by recent guests (8.4)</p>
+                    <h3>Breakfast Info</h3>
+                    <p>Continental, Buffet, Breakfast to go</p>
+                    <p>Private parking at the hotel</p>
+                    <h3>Loyal customers</h3>
+                    <p> There are more repeat guests than most of other properties</p>
+                    <!-- cart form -->
+                    <legend>
+                    
+                        <section>
+                    
+                            <form action="/add" method="post" class="form-control col-sm-1"><br><br><br>
+                                <p class="text-muted">Enter Quantity</p><br>
+                                <input type="hidden" name="code" value="{{data[0]}}" />
+                                <input type="number" name="quantity" placeholder="Qtty" required><br><br>
+                                <h5 class="text-warning">Price :&nbspKSH &nbsp{{data[3]}}</h5><br>
+                                <button type="submit" class="btn btn-danger">ADD TO CART</button>
+                                <br><br>
+                    
+                                <br>
+                            </form>
+                    
+                            <br>
+                    
+                        </section>
+                    </legend>
+                    
+                    <button type="button"  data-bs-target="#mpesamodal"  data-bs-toggle="modal" class="btn btn-primary p-2">Book</button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+    <!-- modal for mpesa form -->
+    <div class="modal fade" id="mpesamodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="text-center">Provide your phone number below</h4>
+                    <button class="btn btn-close" type="button" data-bs-dismiss="modal"></button>
+
+
+                </div>
+                <!-- body -->
+               <div class="modal-body">
+                <form action="/mpesa_payment" method="post">
+                   <input type="tel" class="form-control" placeholder="Enter phone number +254*********" name="phone" id="">
+                    <input type="number" class="form-control" placeholder="Enter amount" name="amount" id="">
+                    <input type="submit" class="btn btn-warning" value="Confirm Booking">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </form>
+
+               </div>
+            </div> 
+
+        </div>
+    </div>
+</body>
+
+</html>

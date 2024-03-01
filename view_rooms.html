@@ -1,0 +1,37 @@
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> -->
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- </head>
+<body> -->
+    <!-- The dashboard contain a nav bar with(view rooms and upload rooms links)
+        inside the view rooms link(html file), create a table to display the room info( name,price per night, availability  and operation) -->
+    <!-- table -->
+    {% include 'admin_dash.html' %}
+    <table class="table">
+        <tr>
+            <th>Name</th> 
+            <th>Price Per Night</th>
+            <th>Availability</th>
+            <th>Operation</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{room[0]}}</td>
+            <td><b style="text-transform: capitalize;">{{room[1]}}</b></td>
+            <td><img height="150"  width="200" src="/static/images/{{room[6]}}" alt=""></td>
+            <td>{{room[3]}}</td>
+            <td>{{room[4]}}</td>
+            <td><a href="/delete{{room[0]}}" class="btn btn-danger p-1">Delete</a></td>
+        </tr>
+        {% endfor %}
+    
+    
+    </table>
+    
+<!-- </body>
+</html> -->
